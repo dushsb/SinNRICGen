@@ -6,8 +6,12 @@ var postFixChar = null;
 var origin = "Singaporean";
 var sevenDigitNo = null;
 
-function getFinNumber(){
-	prefixChar = getPrefixChar(bornYear);
+function getFinNumber(preFixChar,age){
+	if(preFixChar=== null || preFixChar==""){
+		prefixChar = getPrefixChar(bornYear);
+	}else{
+		prefixChar = preFixChar;
+	}
 	console.log(prefixChar);
 	sevenDigitNo = getSevenDigitNo();
 	console.log(sevenDigitNo.join(""));
