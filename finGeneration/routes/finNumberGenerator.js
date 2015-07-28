@@ -6,14 +6,15 @@ var postFixChar = null;
 var origin = "Singaporean";
 var sevenDigitNo = null;
 
-function getFinNumber(preFixChar,age){
+function getFinNumber(preFixChar,yearborn){
 	if(preFixChar=== null || preFixChar==""){
 		prefixChar = getPrefixChar(bornYear);
 	}else{
 		prefixChar = preFixChar;
 	}
+	bornYear = yearborn;
 	console.log(prefixChar);
-	sevenDigitNo = getSevenDigitNo();
+	sevenDigitNo = getSevenDigitNo(bornYear);
 	console.log(sevenDigitNo.join(""));
 
 	var modVal = getSumOfProducts();
@@ -36,10 +37,17 @@ function getPrefixChar(bornYear){
 	return prefixChar;
 }
 
-function getSevenDigitNo(){
+function getSevenDigitNo(bornYear){
 	var numbers = new Array(7);
+	
 	for (var i = 0; i < numbers.length; i++) {
-	    numbers[i] = randomIntInc(0,9)
+		if(-1 != bornYear && i == 0 && bornYear == 5){
+			numbers[i] = randomIntInc(0,4)
+		}else if(-1 != bornYear && i == 0){
+			numbers[0] = bornYear;
+		}else{
+			numbers[i] = randomIntInc(0,9)
+		}
 	}
 	return numbers;
 }
